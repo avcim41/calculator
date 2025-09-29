@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi - Online Hesaplama Aracı</title>
+    <meta name="description" content="Ücretsiz online hesap makinesi. Temel matematik işlemlerini hızlı ve kolay bir şekilde yapın.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="calapp.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="calapp.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGklEQVR4nMWXa2yTVRjHf+/7vu/btnRru13oaOlYNzrGhQEb4+INBcULKBoviPGCxqhfTEz8YKLRqDHxgxcSEz+YmKgfNEYTjRq8fNAbqIgXvKEoIAzYGNvGtq5ru7Xv+5zzPsd36EpHSXf7uCdt3uf3P8//f85zTgv8T7/QkyN1dd9+2x6N3hOJrCBl2kJGhYwKE/AFAILcOKSQkBMDgJwYGPFNy+Hh4ej8xUv/mjl37sSd/8XAW++8RUaNY1JODAzOWbDoHCHEOqVUizGm2RhjhBBY6xFCAKCUBqCUsgIgtVajZmx7++0PfvvjjwdXrVl3VvgaBI6WVvPGwbZq1XLWAi8C7UCnEKJLSlljjKmP+Hy1Sil/NBoNmJxzmOz4n19+LVdXLb5l75OP3Tdy9Mj5p4TXQOD42LGMhYUFd7WuXNPacMKCzwOdUsoaY1qllDXGmJpIJBKdO3duc3Nz86xAIFAmM5MkEglKpRIFY3AGHuGl197ikcce59LLrvgPCOzr6eFn77M3o2f7Zm8iQ3+KfgAhRK0Uotpvbb3W73aT8FleC6GQVsJrUB4T5+Gnn36J2267lds7Oq5YtGjRlQsXLqQxGZ3+Pt1uQRdttXbr1NxcKlm/H5iN5MgRL5vuvnSM73Lg9ba29nopxCzf7fbbXdetrq6uzlitjKiVl8aVZ8E3Y+OYLfffc6EJnKiqwJyFC67sdxzTY628vlrt93mdAIKgz3Hp9W+9Nt39k1nDwsKCe/6JNIcON8K8OXBhOyzYRHX49DPmZGJduzaGkHMf8JzPJi9KTqFx/oLm9k/e5oWlkdVVVVVrZ+rP8/fv55GpXjY2+fz9/S7bvBOmdA8MeEuHJhULBVIvPPfcP0HAb1sXCO15EQAAIABJREFU6emNUCqV+Bv5CbEjYk5Vzt3RKYSoNsasFFLM9D9++/bNFVW19gBq27atRBp88C6wHpvYgNfOmTNnztGELiamKiCWMhPFqn2e4xLF7LN3jXrOH7k+p0Vs8RyXMeaetv4+Jnef5a7I6nUsFov9evfb773FGNNhjPnKWrvN2nrDGNOhZuI/NrJ5iOGjzjTMiozGKmBVbm42SLAgGBP3T8Lc/cRHJT/fJyoqqq60TqrROKO6xfJCrPGkmU7f1ta1btqgNYODA4xfHGWZfKKmJhbPRTlx4iR5ELbzNXP+Bz5K7XE24Oy4SbUx5lzRFktt4wJBv8Vxp5R6AjgI3Ak8DSy01k4oIWNEXSA7ixHb8j87kFJWW2s3WGvXK6UagiF7xnEV1lpKJXdKJT8Buwv7n36cJx966nfgI+A64H7gDqDZGFOvpKhWVVXVPsex1lozNTdCRz9/2rPncEe36BPPO83pHdwOIJS3PGl8t8Mau0FIeY21dpOSoi4UCiWklFbVLN+A5kZjTIOUstaYOmNMg1KqJhAIhHM5m8wEy8RJKduBr4CNwGbgXeNmvl/Uf6AbuBO4ZZxsAnHg5DuX7SdlNPLJBPffZVjpYo4wMQ9o3Y5KdFWLvf32b+nv738B+Ah4DdgKbDPGLAdagOONYFUfPJtJ/3b2QTDhq6x39LTH08/WGm5p9q3OLLDJe2/M1PEb9NKlUmjz3PF3MYLbOzrSQsjbU9k7TvvnFmjL+9SIlFKKt4s7Pv7km7NhAMDgwP6tHzvOLs/75CYQTsZ88v6L/wN/BbVfMv5nLgvqb/7KfgYAAAAAElFTkSuQmCC">
+    <meta name="theme-color" content="#667eea">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            --container-bg: rgba(255, 255, 255, 0.08);
+            --calculator-bg: rgba(255, 255, 255, 0.12);
+            --display-bg: rgba(255, 255, 255, 0.9);
+            --display-color: #1a1a2e;
+            --number-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
+            --number-color: #1a1a2e;
+            --number-hover: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 0.9));
+            --history-bg: rgba(255, 255, 255, 0.15);
+            --history-color: rgba(255, 255, 255, 0.9);
+            --title-gradient: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%);
+            --footer-color: rgba(255, 255, 255, 0.9);
+            --orb1: rgba(120, 119, 198, 0.3);
+            --orb2: rgba(255, 119, 198, 0.3);
+            --orb3: rgba(120, 219, 255, 0.3);
+        }
+
+        [data-theme="dark"] {
+            --bg-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            --container-bg: rgba(255, 255, 255, 0.03);
+            --calculator-bg: rgba(255, 255, 255, 0.05);
+            --display-bg: rgba(20, 20, 30, 0.8);
+            --display-color: #e0e0e0;
+            --number-bg: linear-gradient(145deg, rgba(40, 40, 50, 0.8), rgba(30, 30, 40, 0.9));
+            --number-color: #e0e0e0;
+            --number-hover: linear-gradient(145deg, rgba(50, 50, 60, 0.9), rgba(40, 40, 50, 0.95));
+            --history-bg: rgba(0, 0, 0, 0.2);
+            --history-color: rgba(200, 200, 200, 0.9);
+            --title-gradient: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 50%, #e0e0e0 100%);
+            --footer-color: rgba(200, 200, 200, 0.8);
+            --orb1: rgba(80, 79, 150, 0.2);
+            --orb2: rgba(200, 79, 150, 0.2);
+            --orb3: rgba(80, 150, 200, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', Arial, sans-serif;
+            background: var(--bg-gradient);
+            background-size: 300% 300%;
+            animation: gradientFlow 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--orb1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--orb2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, var(--orb3) 0%, transparent 50%);
+            animation: floatingOrbs 20s ease-in-out infinite;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            33% { background-position: 100% 50%; }
+            66% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatingOrbs {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .container {
+            background: var(--container-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.15), 
+                0 5px 15px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.05), 
+                rgba(255, 255, 255, 0.2));
+            border-radius: 30px;
+            z-index: -1;
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            animation: sweep 3s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        h1 {
+            text-align: center;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            font-size: 3.2rem;
+            font-weight: 200;
+            text-shadow: 0 4px 20px rgba(255,255,255,0.3);
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .calculator {
+            background: var(--calculator-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+
+        .display {
+            width: 100%;
+            height: 95px;
+            font-size: 2.4rem;
+            text-align: right;
+            padding: 0 30px;
+            border: none;
+            background: var(--display-bg);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: var(--display-color);
+            font-weight: 600;
+            box-shadow: 
+                inset 0 4px 12px rgba(0,0,0,0.08),
+                inset 0 1px 0 rgba(255,255,255,1),
+                0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .display:focus {
+            outline: none;
+            box-shadow: 
+                inset 0 4px 12px rgba(0,0,0,0.08),
+                0 0 0 3px rgba(102, 126, 234, 0.3),
+                0 8px 25px rgba(102, 126, 234, 0.15);
+            transform: scale(1.02);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            height: 70px;
+            border: none;
+            border-radius: 18px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 8px 20px rgba(0,0,0,0.12),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 0;
+        }
+
+        button:hover::before {
+            width: 120%;
+            height: 120%;
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                0 0 20px rgba(255,255,255,0.1);
+        }
+
+        button:active {
+            transform: translateY(-2px) scale(1.02);
+            transition: all 0.1s;
+        }
+
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .number {
+            background: var(--number-bg);
+            color: var(--number-color);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .number:hover {
+            background: var(--number-hover);
+            color: var(--number-color);
+        }
+
+        .operator {
+            background: linear-gradient(145deg, #ff6b9d, #c44569);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .operator:hover {
+            background: linear-gradient(145deg, #ff8fab, #d55a7a);
+        }
+
+        .equals {
+            background: linear-gradient(145deg, #4facfe, #00f2fe);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .equals:hover {
+            background: linear-gradient(145deg, #6fc5ff, #3bfffe);
+        }
+
+        .clear {
+            background: linear-gradient(145deg, #ffa726, #ff7043);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .clear:hover {
+            background: linear-gradient(145deg, #ffb74d, #ff8a65);
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            z-index: 1;
+            position: relative;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .display {
+                height: 70px;
+                font-size: 1.8rem;
+            }
+            
+            button {
+                height: 50px;
+                font-size: 1.1rem;
+            }
+        }
+
+        .history {
+            background: var(--history-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            max-height: 160px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.5s ease;
+        }
+
+        .history-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: var(--history-color);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            transition: color 0.5s ease;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--footer-color);
+            font-size: 0.95rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            z-index: 1;
+            position: relative;
+            transition: color 0.5s ease;
+        } 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            max-height: 160px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .history-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Tema Değiştir">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <div class="container">
+        <h1>Hesap Makinesi</h1>
+        
+        <div class="calculator">
+            <div class="history" id="history" style="display: none;">
+                <div id="history-list"></div>
+            </div>
+            
+            <input type="text" class="display" id="display" readonly placeholder="0">
+            
+            <div class="buttons">
+                <button class="clear" onclick="clearAll()"><span>C</span></button>
+                <button class="clear" onclick="clearEntry()"><span>CE</span></button>
+                <button class="operator" onclick="deleteLast()"><span>⌫</span></button>
+                <button class="operator" onclick="appendToDisplay('/')"><span>/</span></button>
+                
+                <button class="number" onclick="appendToDisplay('7')"><span>7</span></button>
+                <button class="number" onclick="appendToDisplay('8')"><span>8</span></button>
+                <button class="number" onclick="appendToDisplay('9')"><span>9</span></button>
+                <button class="operator" onclick="appendToDisplay('*')"><span>×</span></button>
+                
+                <button class="number" onclick="appendToDisplay('4')"><span>4</span></button>
+                <button class="number" onclick="appendToDisplay('5')"><span>5</span></button>
+                <button class="number" onclick="appendToDisplay('6')"><span>6</span></button>
+                <button class="operator" onclick="appendToDisplay('-')"><span>-</span></button>
+                
+                <button class="number" onclick="appendToDisplay('1')"><span>1</span></button>
+                <button class="number" onclick="appendToDisplay('2')"><span>2</span></button>
+                <button class="number" onclick="appendToDisplay('3')"><span>3</span></button>
+                <button class="operator" onclick="appendToDisplay('+')"><span>+</span></button>
+                
+                <button class="number zero" onclick="appendToDisplay('0')"><span>0</span></button>
+                <button class="number" onclick="appendToDisplay('.')"><span>.</span></button>
+                <button class="equals" onclick="calculate()"><span>=</span></button>
+            </div>
+            
+            <div style="margin-top: 25px; text-align: center;">
+                <button onclick="toggleHistory()" style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)); backdrop-filter: blur(10px); color: white; padding: 12px 25px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 12px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+                    ✨ Geçmişi Göster/Gizle
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 Online Hesap Makinesi. Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Function
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Button rotation animation
+            const toggleButton = document.querySelector('.theme-toggle');
+            toggleButton.style.transform = 'scale(0.8) rotate(180deg)';
+            setTimeout(() => {
+                toggleButton.style.transform = '';
+            }, 200);
+        }
+
+        // Load saved theme or default to light
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', loadTheme);
+
+        let display = document.getElementById('display');
+        let currentInput = '';
+        let shouldResetDisplay = false;
+        let history = [];
+
+        function appendToDisplay(value) {
+            if (shouldResetDisplay) {
+                display.value = '';
+                shouldResetDisplay = false;
+            }
+            
+            if (display.value === '0' && value !== '.') {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
+            currentInput = display.value;
+        }
+
+        function clearAll() {
+            display.value = '0';
+            currentInput = '';
+            // Geçmişi de temizle
+            history = [];
+            updateHistoryDisplay();
+        }
+
+        function clearEntry() {
+            // Son girilen sayıyı sil, operatörlerden sonrasını temizle
+            let expression = display.value;
+            let lastOperatorIndex = Math.max(
+                expression.lastIndexOf('+'),
+                expression.lastIndexOf('-'),
+                expression.lastIndexOf('*'),
+                expression.lastIndexOf('×'),
+                expression.lastIndexOf('/')
+            );
+            
+            if (lastOperatorIndex !== -1) {
+                // Son operatörden sonrasını sil
+                display.value = expression.substring(0, lastOperatorIndex + 1);
+            } else {
+                // Hiç operatör yoksa tümünü temizle
+                display.value = '0';
+            }
+            currentInput = display.value;
+        }
+
+        function deleteLast() {
+            if (display.value.length > 1) {
+                display.value = display.value.slice(0, -1);
+            } else {
+                display.value = '0';
+            }
+            currentInput = display.value;
+        }
+
+        function calculate() {
+            try {
+                let expression = display.value;
+                // Güvenlik için sadece sayılar ve matematik operatörlerine izin ver
+                if (!/^[0-9+\-*/.() ]+$/.test(expression)) {
+                    throw new Error('Geçersiz karakter');
+                }
+                
+                // × işaretini * ile değiştir
+                expression = expression.replace(/×/g, '*');
+                
+                let result = eval(expression);
+                
+                if (!isFinite(result)) {
+                    throw new Error('Geçersiz işlem');
+                }
+                
+                // Geçmişe ekle
+                addToHistory(display.value + ' = ' + result);
+                
+                display.value = result;
+                shouldResetDisplay = true;
+                currentInput = result.toString();
+                
+            } catch (error) {
+                display.value = 'Hata';
+                shouldResetDisplay = true;
+                setTimeout(() => {
+                    if (display.value === 'Hata') {
+                        display.value = '0';
+                    }
+                }, 1500);
+            }
+        }
+
+        function addToHistory(calculation) {
+            history.unshift(calculation);
+            if (history.length > 10) {
+                history.pop();
+            }
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            let historyList = document.getElementById('history-list');
+            historyList.innerHTML = '';
+            
+            history.forEach(item => {
+                let historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.textContent = item;
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        function toggleHistory() {
+            let historyDiv = document.getElementById('history');
+            if (historyDiv.style.display === 'none') {
+                historyDiv.style.display = 'block';
+            } else {
+                historyDiv.style.display = 'none';
+            }
+        }
+
+        // Klavye desteği
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9') {
+                appendToDisplay(key);
+            } else if (key === '.') {
+                appendToDisplay('.');
+            } else if (key === '+') {
+                appendToDisplay('+');
+            } else if (key === '-') {
+                appendToDisplay('-');
+            } else if (key === '*') {
+                appendToDisplay('*');
+            } else if (key === '/') {
+                event.preventDefault();
+                appendToDisplay('/');
+            } else if (key === 'Enter' || key === '=') {
+                event.preventDefault();
+                calculate();
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clearAll();
+            } else if (key === 'Backspace') {
+                event.preventDefault();
+                deleteLast();
+            }
+        });
+
+        // Sayfa yüklendiğinde display'i sıfırla
+        window.onload = function() {
+            display.value = '0';
+        };
+    </script>
+</body>
+</html>
