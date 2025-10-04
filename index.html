@@ -6,7 +6,6 @@
     <title>Hesap Makinesi - Online Hesaplama Aracı</title>
     <meta name="description" content="Ücretsiz online hesap makinesi. Temel matematik işlemlerini hızlı ve kolay bir şekilde yapın.">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="calapp.png">
     <link rel="icon" type="image/png" sizes="16x16" href="calapp.png">
     <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGklEQVR4nMWXa2yTVRjHf+/7vu/btnRru13oaOlYNzrGhQEb4+INBcULKBoviPGCxqhfTEz8YKLRqDHxgxcSEz+YmKgfNEYTjRq8fNAbqIgXvKEoIAzYGNvGtq5ru7Xv+5zzPsd36EpHSXf7uCdt3uf3P8//f85zTgv8T7/QkyN1dd9+2x6N3hOJrCBl2kJGhYwKE/AFAILcOKSQkBMDgJwYGPFNy+Hh4ej8xUv/mjl37sSd/8XAW++8RUaNY1JODAzOWbDoHCHEOqVUizGm2RhjhBBY6xFCAKCUBqCUsgIgtVajZmx7++0PfvvjjwdXrVl3VvgaBI6WVvPGwbZq1XLWAi8C7UCnEKJLSlljjKmP+Hy1Sil/NBoNmJxzmOz4n19+LVdXLb5l75OP3Tdy9Mj5p4TXQOD42LGMhYUFd7WuXNPacMKCzwOdUsoaY1qllDXGmJpIJBKdO3duc3Nz86xAIFAmM5MkEglKpRIFY3AGHuGl197ikcce59LLrvgPCOzr6eFn77M3o2f7Zm8iQ3+KfgAhRK0Uotpvbb3W73aT8FleC6GQVsJrUB4T5+Gnn36J2267lds7Oq5YtGjRlQsXLqQxGZ3+Pt1uQRdttXbr1NxcKlm/H5iN5MgRL5vuvnSM73Lg9ba29nopxCzf7fbbXdetrq6uzlitjKiVl8aVZ8E3Y+OYLfffc6EJnKiqwJyFC67sdxzTY628vlrt93mdAIKgz3Hp9W+9Nt39k1nDwsKCe/6JNIcON8K8OXBhOyzYRHX49DPmZGJduzaGkHMf8JzPJi9KTqFx/oLm9k/e5oWlkdVVVVVrZ+rP8/fv55GpXjY2+fz9/S7bvBOmdA8MeEuHJhULBVIvPPfcP0HAb1sXCO15EQAAIABJREFU6emNUCqV+Bv5CbEjYk5Vzt3RKYSoNsasFFLM9D9++/bNFVW19gBq27atRBp88C6wHpvYgNfOmTNnztGELiamKiCWMhPFqn2e4xLF7LN3jXrOH7k+p0Vs8RyXMeaetv4+Jnef5a7I6nUsFov9evfb773FGNNhjPnKWrvN2nrDGNOhZuI/NrJ5iOGjzjTMiozGKmBVbm42SLAgGBP3T8Lc/cRHJT/fJyoqqq60TqrROKO6xfJCrPGkmU7f1ta1btqgNYODA4xfHGWZfKKmJhbPRTlx4iR5ELbzNXP+Bz5K7XE24Oy4SbUx5lzRFktt4wJBv8Vxp5R6AjgI3Ak8DSy01k4oIWNEXSA7ixHb8j87kFJWW2s3WGvXK6UagiF7xnEV1lpKJXdKJT8Buwv7n36cJx966nfgI+A64H7gDqDZGFOvpKhWVVXVPsex1lozNTdCRz9/2rPncEe36BPPO83pHdwOIJS3PGl8t8Mau0FIeY21dpOSoi4UCiWklFbVLN+A5kZjTIOUstaYOmNMg1KqJhAIhHM5m8wEy8RJKduBr4CNwGbgXeNmvl/Uf6AbuBO4ZZxsAnHg5DuX7SdlNPLJBPffZVjpYo4wMQ9o3Y5KdFWLvf32b+nv738B+Ah4DdgKbDPGLAdagOONYFUfPJtJ/3b2QTDhq6x39LTH08/WGm5p9q3OLLDJe2/M1PEb9NKlUmjz3PF3MYLbOzrSQsjbU9k7TvvnFmjL+9SIlFKKt4s7Pv7km7NhAMDgwP6tHzvOLs/75CYQTsZ88v6L/wN/BbVfMv5nLgvqb/7KfgYAAAAAElFTkSuQmCC">
@@ -220,6 +219,21 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .display.small-text {
+            font-size: 1.8rem;
+        }
+
+        .display.smaller-text {
+            font-size: 1.4rem;
+        }
+
+        .display.smallest-text {
+            font-size: 1.1rem;
         }
 
         .display:focus {
@@ -436,8 +450,8 @@
     </style>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Tema Değiştir">
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Tema Değiştir" style="float: right; margin-left: auto; background-color: transparent;">
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
     </button>
@@ -491,7 +505,7 @@
     </div>
 
     <script>
-        // Theme Toggle Function
+
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -499,7 +513,7 @@
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Button rotation animation
+
             const toggleButton = document.querySelector('.theme-toggle');
             toggleButton.style.transform = 'scale(0.8) rotate(180deg)';
             setTimeout(() => {
@@ -507,14 +521,28 @@
             }, 200);
         }
 
-        // Load saved theme or default to light
+
         function loadTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
         }
 
-        // Initialize theme on page load
+
         document.addEventListener('DOMContentLoaded', loadTheme);
+
+
+        function adjustDisplaySize() {
+            const length = display.value.length;
+            display.classList.remove('small-text', 'smaller-text', 'smallest-text');
+            
+            if (length > 18) {
+                display.classList.add('smallest-text');
+            } else if (length > 14) {
+                display.classList.add('smaller-text');
+            } else if (length > 10) {
+                display.classList.add('small-text');
+            }
+        }
 
         let display = document.getElementById('display');
         let currentInput = '';
@@ -522,29 +550,39 @@
         let history = [];
 
         function appendToDisplay(value) {
+
             if (shouldResetDisplay) {
-                display.value = '';
-                shouldResetDisplay = false;
-            }
-            
-            if (display.value === '0' && value !== '.') {
-                display.value = value;
+
+                if (['+', '-', '*', '/'].includes(value)) {
+                    shouldResetDisplay = false;
+                    display.value += value;
+                } else {
+
+                    display.value = value;
+                    shouldResetDisplay = false;
+                }
             } else {
-                display.value += value;
+                if (display.value === '0' && value !== '.') {
+                    display.value = value;
+                } else {
+                    display.value += value;
+                }
             }
             currentInput = display.value;
+            adjustDisplaySize();
         }
 
         function clearAll() {
             display.value = '0';
             currentInput = '';
-            // Geçmişi de temizle
+
             history = [];
             updateHistoryDisplay();
+            adjustDisplaySize();
         }
 
         function clearEntry() {
-            // Son girilen sayıyı sil, operatörlerden sonrasını temizle
+
             let expression = display.value;
             let lastOperatorIndex = Math.max(
                 expression.lastIndexOf('+'),
@@ -555,13 +593,14 @@
             );
             
             if (lastOperatorIndex !== -1) {
-                // Son operatörden sonrasını sil
+
                 display.value = expression.substring(0, lastOperatorIndex + 1);
             } else {
-                // Hiç operatör yoksa tümünü temizle
+
                 display.value = '0';
             }
             currentInput = display.value;
+            adjustDisplaySize();
         }
 
         function deleteLast() {
@@ -571,17 +610,17 @@
                 display.value = '0';
             }
             currentInput = display.value;
+            adjustDisplaySize();
         }
 
         function calculate() {
             try {
                 let expression = display.value;
-                // Güvenlik için sadece sayılar ve matematik operatörlerine izin ver
+
                 if (!/^[0-9+\-*/.() ]+$/.test(expression)) {
                     throw new Error('Geçersiz karakter');
                 }
                 
-                // × işaretini * ile değiştir
                 expression = expression.replace(/×/g, '*');
                 
                 let result = eval(expression);
@@ -590,12 +629,12 @@
                     throw new Error('Geçersiz işlem');
                 }
                 
-                // Geçmişe ekle
                 addToHistory(display.value + ' = ' + result);
                 
                 display.value = result;
                 shouldResetDisplay = true;
                 currentInput = result.toString();
+                adjustDisplaySize();
                 
             } catch (error) {
                 display.value = 'Hata';
@@ -603,6 +642,7 @@
                 setTimeout(() => {
                     if (display.value === 'Hata') {
                         display.value = '0';
+                        adjustDisplaySize();
                     }
                 }, 1500);
             }
@@ -637,7 +677,7 @@
             }
         }
 
-        // Klavye desteği
+
         document.addEventListener('keydown', function(event) {
             const key = event.key;
             
@@ -665,7 +705,7 @@
             }
         });
 
-        // Sayfa yüklendiğinde display'i sıfırla
+
         window.onload = function() {
             display.value = '0';
         };
